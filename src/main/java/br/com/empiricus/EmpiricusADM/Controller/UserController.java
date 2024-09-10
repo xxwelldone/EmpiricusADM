@@ -2,6 +2,7 @@ package br.com.empiricus.EmpiricusADM.Controller;
 
 import br.com.empiricus.EmpiricusADM.Model.User;
 import br.com.empiricus.EmpiricusADM.Service.UserService;
+import br.com.empiricus.EmpiricusADM.dto.UserDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,9 +18,9 @@ public class UserController {
     private final UserService service;
 
     @GetMapping
-    public ResponseEntity<List<User>> getAll() {
+    public ResponseEntity<List<UserDTO>> getAll() {
         try {
-            List<User> allUsers = service.findAllUsers();
+            List<UserDTO> allUsers = service.findAllUsers();
             return ResponseEntity.ok().body(allUsers);
         } catch (RuntimeException e) {
             return ResponseEntity.internalServerError().build();
@@ -27,10 +28,10 @@ public class UserController {
     }
 
     @GetMapping(value = "/{id}")
-    public ResponseEntity<User> getbyId(@PathVariable Long id) {
+    public ResponseEntity<UserDTO> getById(@PathVariable Long id) {
         try {
-            User userbyId = service.findUserById(id);
-            return ResponseEntity.ok().body(userbyId);
+            UserDTO userById = service.findUserById(id);
+            return ResponseEntity.ok().body(userById);
         } catch (RuntimeException e) {
             return ResponseEntity.notFound().build();
         }
@@ -38,8 +39,8 @@ public class UserController {
     }
 
     @PostMapping
-    public ResponseEntity<User> post(@RequestBody User user) {
-        User savedUser = service.createUser(user);
+    public ResponseEntity<UserDTO> post(@RequestBody User user) {
+        UserDTO savedUser = service.createUser(user);
         URI uri = ServletUriComponentsBuilder
                 .fromCurrentRequest().path("{id}").
                 buildAndExpand(savedUser.getId()).toUri();
@@ -47,9 +48,9 @@ public class UserController {
     }
 
     @PutMapping(value = "/{id}")
-    public ResponseEntity<User> put(@PathVariable Long id, @RequestBody User user) {
+    public ResponseEntity<UserDTO> put(@PathVariable Long id, @RequestBody User user) {
         try {
-            User updatedUser = service.UpdateUser(id, user);
+            UserDTO updatedUser = service.updateUser(id, user);
             return ResponseEntity.accepted().body(updatedUser);
         } catch (RuntimeException e) {
             return ResponseEntity.badRequest().build();
@@ -59,10 +60,10 @@ public class UserController {
     @DeleteMapping(value = "/{id}")
     public ResponseEntity<Void> delete(@PathVariable Long id) {
         try {
-        service.DeleteUser(id);
+        service.deleteUser(id);
         return ResponseEntity.accepted().build();
         } catch (RuntimeException e) {
-            return ResponseEntity.internalServerError().build();
+            return ResponseEntity.notFound().build();
         }
     }
 

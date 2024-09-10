@@ -2,6 +2,8 @@ package br.com.empiricus.EmpiricusADM.Controller;
 
 import br.com.empiricus.EmpiricusADM.Model.Email;
 import br.com.empiricus.EmpiricusADM.Service.EmailService;
+import br.com.empiricus.EmpiricusADM.dto.EmailDTO;
+import br.com.empiricus.EmpiricusADM.dto.UserEmailDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -18,19 +20,19 @@ public class EmailController {
     private final EmailService service;
 
     @GetMapping
-    public ResponseEntity<List<Email>> getAll() {
+    public ResponseEntity<List<EmailDTO>> getAll() {
         try {
-            List<Email> allEmails = service.findAllEmails();
+            List<EmailDTO> allEmails = service.findAllEmails();
             return ResponseEntity.ok().body(allEmails);
         } catch (RuntimeException e) {
             return ResponseEntity.notFound().build();
         }
     }
 
-    @GetMapping(value = "/{username}")
-    public ResponseEntity<List<Email>> getByUser(@PathVariable String username) {
+    @GetMapping(value = "/{id}")
+    public ResponseEntity<UserEmailDTO> getByUser(@PathVariable Long id) {
         try {
-            List<Email> emailsByUser = service.findEmailbyUser(username);
+            UserEmailDTO emailsByUser = service.findEmailByUser(id);
             return ResponseEntity.ok().body(emailsByUser);
         } catch (RuntimeException e) {
             return ResponseEntity.notFound().build();
@@ -38,9 +40,9 @@ public class EmailController {
     }
 
     @PostMapping
-    public ResponseEntity<Email> post(@RequestBody Email email) {
+    public ResponseEntity<EmailDTO> post(@RequestBody Email email) {
         try {
-            Email savedEmail = service.createEmail(email);
+            EmailDTO savedEmail = service.createEmail(email);
             URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
                     .path("/{id}").buildAndExpand(savedEmail.getId()).toUri();
             return ResponseEntity.created(uri).body(savedEmail);
@@ -52,7 +54,7 @@ public class EmailController {
     @DeleteMapping(value = "/{id}")
     public ResponseEntity<Void> delete(@PathVariable Long id) {
         try {
-            service.DeleteEmail(id);
+            service.deleteEmail(id);
             return ResponseEntity.accepted().build();
         } catch (RuntimeException e) {
             return ResponseEntity.badRequest().build();
