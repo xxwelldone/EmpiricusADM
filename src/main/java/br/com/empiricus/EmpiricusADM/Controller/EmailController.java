@@ -27,7 +27,7 @@ public class EmailController {
         }
     }
 
-    @GetMapping(value = "/{id}")
+    @GetMapping(value = "/{username}")
     public ResponseEntity<List<Email>> getByUser(@PathVariable String username) {
         try {
             List<Email> emailsByUser = service.findEmailbyUser(username);

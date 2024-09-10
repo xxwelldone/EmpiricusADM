@@ -11,17 +11,23 @@ import java.util.List;
 @RequiredArgsConstructor
 public class EmailService {
     private final EmailRepository repo;
+    private final MailService mailService;
+    private final UserService userService;
 
-    public List<Email> findAllEmails(){
+    public List<Email> findAllEmails() {
         return repo.findAll();
     }
-    public List<Email> findEmailbyUser(String username){
+
+    public List<Email> findEmailbyUser(String username) {
         return repo.findAllByUsuarioNomeContainingIgnoreCase(username);
     }
-    public Email createEmail(Email email){
-       return  repo.save(email);
+
+    public Email createEmail(Email email) {
+
+        return repo.save(email);
     }
-    public void DeleteEmail(Long id){
+
+    public void DeleteEmail(Long id) {
         repo.deleteById(id);
     }
 

@@ -12,6 +12,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class UserService {
     private final UserRepository repo;
+    private final MailService mailService;
 
     public List<User> findAllUsers(){
         return repo.findAll();

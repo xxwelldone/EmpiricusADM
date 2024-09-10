@@ -23,6 +23,5 @@ public class User {
     private Instant data_criacao;
     private Instant data_atualizacao;
     private boolean eh_admin;
-    @OneToMany(mappedBy = "usuario")
-    private List<Email> emails;
+
 }
