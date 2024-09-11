@@ -19,7 +19,10 @@ public class UserService {
 
 
     public List<UserDTO> findAllUsers() {
-        return repo.findAll().stream().map(UserDTO::new).collect(Collectors.toList());
+        return repo.findAll()
+                .stream()
+                .map(UserDTO::new)
+                .collect(Collectors.toList());
     }
 
     public UserDTO findUserById(Long id) {

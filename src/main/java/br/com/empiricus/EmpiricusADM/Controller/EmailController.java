@@ -20,9 +20,9 @@ public class EmailController {
     private final EmailService service;
 
     @GetMapping
-    public ResponseEntity<List<EmailDTO>> getAll() {
+    public ResponseEntity<List<UserEmailDTO>> getAll() {
         try {
-            List<EmailDTO> allEmails = service.findAllEmails();
+            List<UserEmailDTO> allEmails = service.findAllEmails();
             return ResponseEntity.ok().body(allEmails);
         } catch (RuntimeException e) {
             return ResponseEntity.notFound().build();
