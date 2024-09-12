@@ -11,6 +11,7 @@ import java.time.Instant;
 public class UserDTO {
     private Long id;
     private String nome;
+    private String CPF;
     private Instant data_criacao;
     private Instant data_atualizacao;
     private boolean eh_admin;
@@ -18,6 +19,7 @@ public class UserDTO {
     public UserDTO(User user) {
         this.id = user.getId();
         this.nome = user.getNome();
+        this.CPF = user.getCpf();
         this.data_criacao = user.getData_criacao();
         this.data_atualizacao = user.getData_atualizacao();
         this.eh_admin = user.isEh_admin();

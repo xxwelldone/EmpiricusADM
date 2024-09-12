@@ -6,6 +6,8 @@ import br.com.empiricus.EmpiricusADM.Service.Exceptions.ItemNotFound;
 import br.com.empiricus.EmpiricusADM.Service.Exceptions.MismatchId;
 import br.com.empiricus.EmpiricusADM.dto.UserDTO;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,6 +18,9 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class UserService {
     private final UserRepository repo;
+    public PasswordEncoder passwordEncoder(){
+        return new BCryptPasswordEncoder();
+    }
 
 
     public List<UserDTO> findAllUsers() {
@@ -32,6 +37,7 @@ public class UserService {
     }
 
     public UserDTO createUser(User user) {
+        user.setPassword(passwordEncoder().encode(user.getPassword()));
         return new UserDTO(repo.save(user));
     }
 
@@ -45,8 +51,10 @@ public class UserService {
     }
 
     private void update(User item, User user) {
+
+
         item.setNome(user.getNome());
-        item.setPassword(user.getPassword());
+        item.setPassword(passwordEncoder().encode(user.getPassword()));
         item.setData_atualizacao(user.getData_atualizacao());
         item.setEh_admin(user.isEh_admin());
     }

@@ -37,6 +37,7 @@ public class EmailService {
     }
 
     public EmailDTO createEmail(Email email) {
+
         Email savedEmail = repo.save(email);
         notifyAdm("criado", savedEmail.getEmail(), savedEmail.getUsuario().getCpf());
         return new EmailDTO(savedEmail);

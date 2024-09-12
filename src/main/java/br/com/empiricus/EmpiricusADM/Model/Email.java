@@ -23,4 +23,5 @@ public class Email {
     @JoinColumn(name = "user_id")
     private User usuario;
 
+
 }

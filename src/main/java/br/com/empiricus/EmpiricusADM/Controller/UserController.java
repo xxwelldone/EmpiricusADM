@@ -5,6 +5,7 @@ import br.com.empiricus.EmpiricusADM.Service.UserService;
 import br.com.empiricus.EmpiricusADM.dto.UserDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
@@ -17,6 +18,7 @@ import java.util.List;
 public class UserController {
     private final UserService service;
 
+    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping
     public ResponseEntity<List<UserDTO>> getAll() {
         try {
@@ -27,6 +29,7 @@ public class UserController {
         }
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping(value = "/{id}")
     public ResponseEntity<UserDTO> getById(@PathVariable Long id) {
         try {
@@ -38,6 +41,7 @@ public class UserController {
 
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping
     public ResponseEntity<UserDTO> post(@RequestBody User user) {
         UserDTO savedUser = service.createUser(user);
@@ -47,6 +51,7 @@ public class UserController {
         return ResponseEntity.created(uri).body(savedUser);
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping(value = "/{id}")
     public ResponseEntity<UserDTO> put(@PathVariable Long id, @RequestBody User user) {
         try {
@@ -57,16 +62,16 @@ public class UserController {
         }
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping(value = "/{id}")
     public ResponseEntity<Void> delete(@PathVariable Long id) {
         try {
-        service.deleteUser(id);
-        return ResponseEntity.accepted().build();
+            service.deleteUser(id);
+            return ResponseEntity.accepted().build();
         } catch (RuntimeException e) {
             return ResponseEntity.notFound().build();
         }
     }
-
 
 
 }

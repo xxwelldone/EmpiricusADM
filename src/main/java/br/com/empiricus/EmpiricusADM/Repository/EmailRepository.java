@@ -7,6 +7,5 @@ import java.util.List;
 
 public interface EmailRepository extends JpaRepository<Email, Long> {
 
-    public List<Email> findAllByUsuarioNomeContainingIgnoreCase(String username);
 
 }
