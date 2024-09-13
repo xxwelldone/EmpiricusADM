@@ -1,70 +1,81 @@
-Teste Técnico para Programador Java Jr
-Este projeto é uma aplicação desenvolvida com Spring Boot para gerenciar um cadastro de usuários e emails, utilizando um banco de dados relacional. O sistema foi projetado para permitir o gerenciamento básico de usuários e emails, com controle de acesso baseado em privilégios administrativos.
 
-🔨 Funcionalidades do projeto
-<b>Login:</b>
-Permite o login de usuários, sendo que apenas usuários com o campo <code>eh_admin = true</code> podem acessar o sistema.
+![Descrição da Imagem](EmpiricusADMPresentation/EmpiricusADM.gif)
+## PROJETO EMPIRICUS-ADM
+Este é um projeto realizado durante o processo seletivo do grupo Empiricus onde era necessário gerar uma aplicação desenvolvida com Spring Boot para gerenciar um cadastro de usuários e emails, utilizando um banco de dados relacional, API de disparo de e-mails e proteção de end-points com Spring Security, além de realização de testes unitários com JUnit, Mockito no padrão triple A e BBD. O sistema foi projetado para permitir o gerenciamento básico de usuários e emails, com controle de acesso baseado em privilégios administrativos.
+
+## Funcionalidades
+
+<details>
+  <summary><b>Login</b></summary>
+
+- Permite o login de usuários, sendo que apenas usuários com o campo <code>eh_admin = true</code> podem realizar inserções, deleções e requerir dados do sistema.
+
+</details>
+
+<details>
+  <summary><b>Usuário</b></summary>
+
+- A tabela usuário deve conter os seguintes campos: <code>id, nome, cpf, password, data_criacao, data_atualizacao, eh_admin </code>
 
 <b>CRUD de Usuários:</b>
 
-<code>Visualizar um usuário específico</code>.
-<code>Listar todos os usuários</code>.
-<code>Criar um novo usuário</code>.
-<code>Alterar um usuário existente</code>.
-<code>Deletar um usuário</code>.
+- <code>Visualizar um usuário específico</code>.
+- <code>Listar todos os usuários</code>.
+- <code>Criar um novo usuário</code>.
+- <code>Alterar um usuário existente</code>.
+- <code>Deletar um usuário</code>.
+<br>
 <b>Obs.: Apenas usuários administradores podem acessar esses endpoints.</b>
-<b>Gerenciamento de Emails:</b>
+</details>
 
-<code>Visualizar os emails de um usuário específico</code>.
-<code>Listar todos os emails de um usuário</code>.
-<code>Criar um novo email</code>.
-<code>Deletar um email</code>.
-<b>Obs.: Apenas usuários administradores podem acessar esses endpoints.</b>
-<b>Envio de Notificações por Email:</b>
-Sempre que um email for cadastrado ou deletado, o sistema envia uma notificação para todos os administradores cadastrados, informando a ação realizada e o CPF do usuário associado.
+<details>
+  <summary><b>E-mail</b></summary>
 
-✔️ Técnicas e tecnologias utilizadas
-<code>Spring Boot</code>: Framework utilizado para o desenvolvimento da aplicação.
-<code>Spring Security</code>: Implementação de autenticação e autorização.
-<code>Spring Data JPA</code>: Para interação com o banco de dados relacional.
-<code>Spring Mail</code>: Para disparos de emails.
-<code>JUnit 5</code> e <code>Mockito</code>: Para testes unitários.
-<code>H2 Database</code>: Banco de dados relacional para desenvolvimento e testes locais.
-<code>PostgreeSQL</code>: Banco de dados relacional para desenvolvimento em produção.
-<code>Docker</code>: (Opcional) Utilizado para criar um ambiente de execução isolado com <code>docker-compose</code>.
-📁 Acesso ao projeto
-Você pode acessar o código fonte do projeto através do repositório GitHub:
+- A tabela e-mail deve conter os seguintes campos: <code>id, email, data_criacao, data_atualizacao </code>
 
-https://github.com/seu-usuario/nome-do-repositorio
+<b>CRUD de Email:</b>
 
-🛠️ Abrir e rodar o projeto
-Para executar o projeto localmente, siga as instruções abaixo:
+- <code>Visualizar os e-mails de um usuário específico</code>.
+- <code>Listar todos os e-mails de usuários</code>.
+- <code>Criar um novo e-mail</code>.
+- <code>Deletar um e-mail</code>.
+<br>
 
-Clone o repositório:
+</details>
 
-bash
-Copy code
-git clone https://github.com/seu-usuario/nome-do-repositorio.git
-cd nome-do-repositorio
-Configure o banco de dados no arquivo <code>application.properties</code>. O H2 está configurado para execução local, mas pode ser adaptado para qualquer banco relacional.
 
-Compile e execute o projeto:
+</details>
 
-bash
-Copy code
-./mvnw spring-boot:run
-Acesse a documentação da API (Swagger) em:
 
-http://localhost:8080/swagger-ui.html
 
-Docker (opcional)
-Para executar o projeto com Docker:
+## 📁 Dependencias necessárias
+- Docker Desktop (caso seja executado com container)
+- Java 17
+- PostgreeSQL (caso seja executado localmente, sem utilizar o Docker).
+- IDE para rodar o projeto (Intellij é recomendado).
 
-Certifique-se de ter o Docker instalado.
+## 📁 Acesso ao projeto
 
-Execute o comando para iniciar a aplicação:
+- Para baixar o projeto do Github, já logado em sua conta Github, basta digitar no terminal da sua IDE:
+```bash
+ git clone https://github.com/xxwelldone/EmpiricusADM.git
+```
+## 🛠️ Abrir e rodar o projeto
 
-bash
-Copy code
+- Utilizando uma IDE, você pode rodar diretamente com o botão Run e sua IDE será responsável por executar o projeto (desde que tenha instalado Postgree, Java 17).
+- Utilizando docker, execute o comando
+```bash
 docker-compose up
+```
+- Para acessar o Swagger do projeto, acesse:
+```bash
+http://localhost:8080/swagger-ui/index.html#/
+```
+A partir daqui será necessário se autenticar como usuário <code> eh_admin = true </code> para que seja possível realizar as operações dos end-points.
 
+Caso utilize um usuário e senha que não é admin, o end-point te avisará que você não é um usuário administrador.
+
+Senhas e usuários que não estejam cadastrados no sistema serão avisados durante o processo de execução de algum dos end-points.
+
+
+ Qualquer dúvida, me chame no <a href="https://www.linkedin.com/in/wesley-menezes-625998193/">LinkedIn</a>.

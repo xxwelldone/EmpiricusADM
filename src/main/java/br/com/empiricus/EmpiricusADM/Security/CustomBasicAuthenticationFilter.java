@@ -68,7 +68,7 @@ public class CustomBasicAuthenticationFilter extends OncePerRequestFilter {
 
             if(!valid){
                 response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
-                response.getWriter().write("eeeeeeeeeeeeeeeeeee Password not match");
+                response.getWriter().write("Password not match");
                 return;
             }
 
