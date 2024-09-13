@@ -5,46 +5,35 @@ Este é um projeto realizado durante o processo seletivo do grupo Empiricus onde
 
 ## Funcionalidades
 
-<details>
-  <summary><b>Login</b></summary>
+Login
 
-- Permite o login de usuários, sendo que apenas usuários com o campo <code>eh_admin = true</code> podem realizar inserções, deleções e requerir dados do sistema.
+- Permite o login de usuários, sendo que apenas usuários com o campo eh_admin = true podem realizar inserções, deleções e requerir dados do sistema.
 
-</details>
+Usuário
 
-<details>
-  <summary><b>Usuário</b></summary>
+- A tabela usuário deve conter os seguintes campos: id, nome, cpf, password, data_criacao, data_atualizacao, eh_admin
 
-- A tabela usuário deve conter os seguintes campos: <code>id, nome, cpf, password, data_criacao, data_atualizacao, eh_admin </code>
+CRUD de Usuários:
 
-<b>CRUD de Usuários:</b>
+- Visualizar um usuário específico.
+- Listar todos os usuários.
+- Criar um novo usuário.
+- Alterar um usuário existente.
+- Deletar um usuário.
 
-- <code>Visualizar um usuário específico</code>.
-- <code>Listar todos os usuários</code>.
-- <code>Criar um novo usuário</code>.
-- <code>Alterar um usuário existente</code>.
-- <code>Deletar um usuário</code>.
-
-<b>Obs.: Apenas usuários administradores podem acessar esses endpoints.</b>
-</details>
-
-<details>
-  <summary><b>E-mail</b></summary>
-
-- A tabela e-mail deve conter os seguintes campos: <code>id, email, data_criacao, data_atualizacao </code>
-
-<b>CRUD de Email:</b>
-
-- <code>Visualizar os e-mails de um usuário específico</code>.
-- <code>Listar todos os e-mails de usuários</code>.
-- <code>Criar um novo e-mail</code>.
-- <code>Deletar um e-mail</code>.
-<br>
-
-</details>
+Obs.: Apenas usuários administradores podem acessar esses endpoints.
 
 
-</details>
+E-mail
+
+- A tabela e-mail deve conter os seguintes campos:id, email, data_criacao, data_atualizacao
+
+CRUD de Email:
+
+- Visualizar os e-mails de um usuário específico.
+- Listar todos os e-mails de usuários.
+- Criar um novo e-mail.
+- Deletar um e-mail.
 
 
 
@@ -71,11 +60,11 @@ docker-compose up
 ```bash
 http://localhost:8080/swagger-ui/index.html#/
 ```
-A partir daqui será necessário se autenticar como usuário <code> eh_admin = true </code> para que seja possível realizar as operações dos end-points.
+A partir daqui será necessário se autenticar como usuário eh_admin = true  para que seja possível realizar as operações dos end-points.
 
 Caso utilize um usuário e senha que não é admin, o end-point te avisará que você não é um usuário administrador.
 
 Senhas e usuários que não estejam cadastrados no sistema serão avisados durante o processo de execução de algum dos end-points.
 
 
- Qualquer dúvida, me chame no <a href="https://www.linkedin.com/in/wesley-menezes-625998193/">LinkedIn</a>.
+ Qualquer dúvida, me chame no [LinkedIn](https://www.linkedin.com/in/wesley-menezes-625998193/)
