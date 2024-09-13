@@ -24,7 +24,7 @@ Este é um projeto realizado durante o processo seletivo do grupo Empiricus onde
 - <code>Criar um novo usuário</code>.
 - <code>Alterar um usuário existente</code>.
 - <code>Deletar um usuário</code>.
-<br>
+
 <b>Obs.: Apenas usuários administradores podem acessar esses endpoints.</b>
 </details>
 
