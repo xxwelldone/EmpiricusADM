@@ -22,7 +22,7 @@ public class testConfig implements CommandLineRunner {
 
     User user1 = new User(1L, "Wesley M", "32794274", "abc123", Instant.now(),
             Instant.now(), true);
-    User user2 = new User(2L, "guilherme", "123456", "abc123", Instant.now(),
+    User user2 = new User(2L, "Felipe Yukio", "123456", "abc123", Instant.now(),
             Instant.now(), false);
     Email email1 = new Email(1L, "wesley@empiricus.com", Instant.now(), Instant.now(), user1);
     Email email2 = new Email(2L, "wesley@vitreo.com", Instant.now(), Instant.now(), user1);

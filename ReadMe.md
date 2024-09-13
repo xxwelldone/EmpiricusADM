@@ -14,7 +14,7 @@ Usuário
 
 - A tabela usuário deve conter os seguintes campos: id, nome, cpf, password, data_criacao, data_atualizacao, eh_admin
 
-CRUD de Usuários:
+Operações de Usuários:
 
 - Visualizar um usuário específico.
 - Listar todos os usuários.
@@ -29,12 +29,16 @@ E-mail
 
 - A tabela e-mail deve conter os seguintes campos:id, email, data_criacao, data_atualizacao
 
-CRUD de Email:
+Operações de Email:
 
 - Visualizar os e-mails de um usuário específico.
 - Listar todos os e-mails de usuários.
 - Criar um novo e-mail.
 - Deletar um e-mail.
+
+Obs 1: Apenas usuários administradores podem acessar esses endpoints.
+
+Obs 2: Sempre que um novo e-mail for cadastrado ou deletado, usuários Administradores receberam um disparo de e-mail avisando sobre e identificando o e-mail removido.
 
 
 
@@ -69,3 +73,6 @@ Senhas e usuários que não estejam cadastrados no sistema serão avisados duran
 
 
  Qualquer dúvida, me chame no [LinkedIn](https://www.linkedin.com/in/wesley-menezes-625998193/)
+## Confira a execução do projeto
+
+![Descrição da Imagem](EmpiricusADMPresentation/EmpiricusADMExecution.gif)
