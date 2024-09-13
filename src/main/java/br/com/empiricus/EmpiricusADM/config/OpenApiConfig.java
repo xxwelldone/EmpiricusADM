@@ -1,7 +1,6 @@
 package br.com.empiricus.EmpiricusADM.config;
 
 
-
 import org.springdoc.core.models.GroupedOpenApi;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -17,9 +16,12 @@ public class OpenApiConfig {
     @Bean
     public OpenAPI customOpenAPI() {
         return new OpenAPI()
-                .info(new Info().title("Desafio Empiricus")
+                .info(new Info().title("Projeto EmpiricusADM")
                         .version("1.0")
-                        .description("API desenvolvida para o desafio da Empiricus"))
+                        .description("O projeto permite a administração de usuários e " +
+                                "seus respectivos emails, onde apenas usuários com privilégios " +
+                                "administrativos (eh_admin = true) têm acesso a certas funcionalidades, " +
+                                "como a criação, visualização, edição e exclusão de registros. "))
                 .addSecurityItem(new SecurityRequirement().addList("basicAuth"))
                 .components(new io.swagger.v3.oas.models.Components()
                         .addSecuritySchemes("basicAuth", new SecurityScheme()

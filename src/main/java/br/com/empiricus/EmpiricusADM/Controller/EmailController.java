@@ -20,7 +20,7 @@ import java.util.List;
 public class EmailController {
 
     private final EmailService service;
-    private final UserService userService;
+
 
     @PreAuthorize("hasRole('ADMIN')")
     @GetMapping
