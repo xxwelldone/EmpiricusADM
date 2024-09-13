@@ -1,5 +1,6 @@
 
 ![Descrição da Imagem](EmpiricusADMPresentation/EmpiricusADM.gif)
+
 ## PROJETO EMPIRICUS-ADM
 Este é um projeto realizado durante o processo seletivo do grupo Empiricus onde era necessário gerar uma aplicação desenvolvida com Spring Boot para gerenciar um cadastro de usuários e emails, utilizando um banco de dados relacional, API de disparo de e-mails e proteção de end-points com Spring Security, além de realização de testes unitários com JUnit, Mockito no padrão triple A e BBD. O sistema foi projetado para permitir o gerenciamento básico de usuários e emails, com controle de acesso baseado em privilégios administrativos.
 
