@@ -1,6 +1,8 @@
 package br.com.empiricus.EmpiricusADM.dto;
 
-import br.com.empiricus.EmpiricusADM.Model.Email;
+import br.com.empiricus.EmpiricusADM.Model.Emails;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -16,7 +18,7 @@ public class EmailDTO {
     private Instant data_atualizacao;
     private Long userId;
 
-    public EmailDTO(Email email) {
+    public EmailDTO(Emails email) {
         this.id = email.getId();
         this.email = email.getEmail();
         this.data_criacao = email.getData_criacao();

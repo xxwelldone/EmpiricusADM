@@ -1,6 +1,6 @@
 package br.com.empiricus.EmpiricusADM.Controller;
 
-import br.com.empiricus.EmpiricusADM.Model.Email;
+import br.com.empiricus.EmpiricusADM.Model.Emails;
 import br.com.empiricus.EmpiricusADM.Service.EmailService;
 import br.com.empiricus.EmpiricusADM.Service.UserService;
 import br.com.empiricus.EmpiricusADM.dto.EmailDTO;
@@ -46,7 +46,7 @@ public class EmailController {
 
     @PreAuthorize("hasRole('ADMIN')")
     @PostMapping
-    public ResponseEntity<EmailDTO> post(@RequestBody Email email) {
+    public ResponseEntity<EmailDTO> post(@RequestBody Emails email) {
         try {
 
             EmailDTO savedEmail = service.createEmail(email);

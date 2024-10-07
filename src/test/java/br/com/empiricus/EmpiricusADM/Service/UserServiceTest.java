@@ -2,7 +2,7 @@ package br.com.empiricus.EmpiricusADM.Service;
 
 import br.com.empiricus.EmpiricusADM.Model.User;
 import br.com.empiricus.EmpiricusADM.Repository.UserRepository;
-import br.com.empiricus.EmpiricusADM.Service.Exceptions.ItemNotFound;
+import br.com.empiricus.EmpiricusADM.Model.Exceptions.ItemNotFound;
 import br.com.empiricus.EmpiricusADM.dto.UserDTO;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;

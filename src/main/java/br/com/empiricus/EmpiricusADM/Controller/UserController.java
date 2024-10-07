@@ -3,6 +3,7 @@ package br.com.empiricus.EmpiricusADM.Controller;
 import br.com.empiricus.EmpiricusADM.Model.User;
 import br.com.empiricus.EmpiricusADM.Service.UserService;
 import br.com.empiricus.EmpiricusADM.dto.UserDTO;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -43,7 +44,7 @@ public class UserController {
 
     @PreAuthorize("hasRole('ADMIN')")
     @PostMapping
-    public ResponseEntity<UserDTO> post(@RequestBody User user) {
+    public ResponseEntity<UserDTO> post(@Valid @RequestBody User user) {
         UserDTO savedUser = service.createUser(user);
         URI uri = ServletUriComponentsBuilder
                 .fromCurrentRequest().path("{id}").
@@ -53,7 +54,7 @@ public class UserController {
 
     @PreAuthorize("hasRole('ADMIN')")
     @PutMapping(value = "/{id}")
-    public ResponseEntity<UserDTO> put(@PathVariable Long id, @RequestBody User user) {
+    public ResponseEntity<UserDTO> put(@PathVariable Long id,@Valid @RequestBody User user) {
         try {
             UserDTO updatedUser = service.updateUser(id, user);
             return ResponseEntity.accepted().body(updatedUser);
