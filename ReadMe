@@ -1,0 +1,70 @@
+Teste Técnico para Programador Java Jr
+Este projeto é uma aplicação desenvolvida com Spring Boot para gerenciar um cadastro de usuários e emails, utilizando um banco de dados relacional. O sistema foi projetado para permitir o gerenciamento básico de usuários e emails, com controle de acesso baseado em privilégios administrativos.
+
+🔨 Funcionalidades do projeto
+<b>Login:</b>
+Permite o login de usuários, sendo que apenas usuários com o campo <code>eh_admin = true</code> podem acessar o sistema.
+
+<b>CRUD de Usuários:</b>
+
+<code>Visualizar um usuário específico</code>.
+<code>Listar todos os usuários</code>.
+<code>Criar um novo usuário</code>.
+<code>Alterar um usuário existente</code>.
+<code>Deletar um usuário</code>.
+<b>Obs.: Apenas usuários administradores podem acessar esses endpoints.</b>
+<b>Gerenciamento de Emails:</b>
+
+<code>Visualizar os emails de um usuário específico</code>.
+<code>Listar todos os emails de um usuário</code>.
+<code>Criar um novo email</code>.
+<code>Deletar um email</code>.
+<b>Obs.: Apenas usuários administradores podem acessar esses endpoints.</b>
+<b>Envio de Notificações por Email:</b>
+Sempre que um email for cadastrado ou deletado, o sistema envia uma notificação para todos os administradores cadastrados, informando a ação realizada e o CPF do usuário associado.
+
+✔️ Técnicas e tecnologias utilizadas
+<code>Spring Boot</code>: Framework utilizado para o desenvolvimento da aplicação.
+<code>Spring Security</code>: Implementação de autenticação e autorização.
+<code>Spring Data JPA</code>: Para interação com o banco de dados relacional.
+<code>Spring Mail</code>: Para disparos de emails.
+<code>JUnit 5</code> e <code>Mockito</code>: Para testes unitários.
+<code>H2 Database</code>: Banco de dados relacional para desenvolvimento e testes locais.
+<code>PostgreeSQL</code>: Banco de dados relacional para desenvolvimento em produção.
+<code>Docker</code>: (Opcional) Utilizado para criar um ambiente de execução isolado com <code>docker-compose</code>.
+📁 Acesso ao projeto
+Você pode acessar o código fonte do projeto através do repositório GitHub:
+
+https://github.com/seu-usuario/nome-do-repositorio
+
+🛠️ Abrir e rodar o projeto
+Para executar o projeto localmente, siga as instruções abaixo:
+
+Clone o repositório:
+
+bash
+Copy code
+git clone https://github.com/seu-usuario/nome-do-repositorio.git
+cd nome-do-repositorio
+Configure o banco de dados no arquivo <code>application.properties</code>. O H2 está configurado para execução local, mas pode ser adaptado para qualquer banco relacional.
+
+Compile e execute o projeto:
+
+bash
+Copy code
+./mvnw spring-boot:run
+Acesse a documentação da API (Swagger) em:
+
+http://localhost:8080/swagger-ui.html
+
+Docker (opcional)
+Para executar o projeto com Docker:
+
+Certifique-se de ter o Docker instalado.
+
+Execute o comando para iniciar a aplicação:
+
+bash
+Copy code
+docker-compose up
+

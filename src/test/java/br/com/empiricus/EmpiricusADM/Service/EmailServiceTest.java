@@ -1,11 +1,13 @@
 package br.com.empiricus.EmpiricusADM.Service;
 
-import br.com.empiricus.EmpiricusADM.Model.Email;
+
+import br.com.empiricus.EmpiricusADM.Model.Emails;
 import br.com.empiricus.EmpiricusADM.Model.User;
 import br.com.empiricus.EmpiricusADM.Repository.EmailRepository;
-import br.com.empiricus.EmpiricusADM.Service.Exceptions.ItemNotFound;
+import br.com.empiricus.EmpiricusADM.Model.Exceptions.ItemNotFound;
 import br.com.empiricus.EmpiricusADM.dto.EmailDTO;
 import br.com.empiricus.EmpiricusADM.dto.UserEmailDTO;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -33,7 +35,7 @@ public class EmailServiceTest {
     @InjectMocks
     private EmailService emailService;
 
-    private Email existingEmail;
+    private Emails existingEmail;
     private User existingUser;
 
     @BeforeEach
@@ -41,7 +43,7 @@ public class EmailServiceTest {
         existingUser = new User(1L, "Sasuke Uchiha", "123456789", "password",
                 Instant.now(), Instant.now(), true);
 
-        existingEmail = new Email(1L, "sasuke.uchiha@example.com", Instant.now(), Instant.now(), existingUser);
+        existingEmail = new Emails(1L, "sasuke.uchiha@example.com", Instant.now(), Instant.now(), existingUser);
     }
 
     @Test
@@ -61,14 +63,15 @@ public class EmailServiceTest {
     @DisplayName("Should save a new email and return EmailDTO")
     public void createEmail_ValidEmail_CallsRepoSave() {
         // Arrange
-        Email newEmail = new Email(null, "neji.hyuga@example.com", Instant.now(), Instant.now(), existingUser);
-        when(emailRepository.save(any(Email.class))).thenReturn(newEmail);
+        Emails newEmail = new Emails(null, "neji.hyuga@example.com", Instant.now(), Instant.now(), existingUser);
+        when(emailRepository.save(any(Emails.class))).thenReturn(newEmail);
 
         // Act
         EmailDTO result = emailService.createEmail(newEmail);
 
         // Assert
-        assertEquals(newEmail.getEmail(), result.getEmail());
+        Assertions.assertEquals(newEmail.getEmail(), result.getEmail());
+//        assertEquals(newEmail.getEmail(), result.getEmail());
         verify(emailRepository, times(1)).save(newEmail);
     }
 
